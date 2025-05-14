@@ -5,7 +5,7 @@ import exceptions.*;
 
 public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
 
-    // Clase interna Node
+    //clase  Node
     private class Node {
         public E data;
         public Node left, right;
@@ -21,21 +21,19 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
     }
 
-    // Atributo raíz
     private Node root;
 
-    // Constructor
     public LinkedBST() {
         this.root = null;
     }
 
-    // Método para saber si el árbol está vacío
+    // metodo para saber si el arbol esta vacío
     @Override
     public boolean isEmpty() {
         return root == null;
     }
 
-    // Insertar dato validando duplicado
+    //insertar dato validando dup
     @Override
     public void insert(E data) throws ItemDuplicated {
         root = insertRec(root, data);
@@ -55,25 +53,25 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return node;
     }
 
-    // Buscar dato validando si no existe
+    // buscar dato viendo si no existe
     public E search(E data) throws ItemNoFound {
         Node node = searchRec(root, data);
         if (node == null) {
             throw new ItemNoFound("Elemento no encontrado: " + data);
         }
-        return node.data;
+        return node.data; // retorna dato encontrado
     }
     private Node searchRec(Node node, E data) {
-        if (node == null) return null;
+        if (node == null) return null; // no hay
 
-        int cmp = data.compareTo(node.data);
+        int cmp = data.compareTo(node.data); // compara 
         if (cmp == 0) return node;
         else if (cmp < 0) return searchRec(node.left, data);
         else return searchRec(node.right, data);
     }
 
 
-    // Eliminar dato validando si está vacío
+    // elimina dato validando si esta vacio
     public void delete(E data) throws ExceptionIsEmpty {
         if (isEmpty())
             throw new ExceptionIsEmpty("No se puede eliminar de un árbol vacío.");
@@ -104,7 +102,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return node;
     }
 
-    // Recorrido In-Orden
+    // recorrido inorden izq raiz der
     public void showInOrder() {
         System.out.print("Recorrido In-Orden: ");
         inOrder(root);
@@ -119,7 +117,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
     }
 
-    // Recorrido Pre-Orden
+    // recorrido preorden raiz izq der
     public void showPreOrder() {
         System.out.print("Recorrido Pre-Orden: ");
         preOrder(root);
@@ -134,7 +132,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
     }
 
-    // Recorrido Post-Orden
+    // recorrido postorden izq der raiz
     public void showPostOrder() {
         System.out.print("Recorrido Post-Orden: ");
         postOrder(root);
@@ -149,10 +147,10 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
     }
 
-    // Mínimo y máximo
+    // min y max valor del nodo
     private E findMinNode(Node node) throws ItemNoFound {
         if (node == null)
-            throw new ItemNoFound("Subárbol vacío: no se puede encontrar el mínimo.");
+            throw new ItemNoFound("Subarbol vacio: no se puede encontrar el minimo");
         while (node.left != null)
             node = node.left;
         return this.search(node.data);
@@ -160,7 +158,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
 
     private E findMaxNode(Node node) throws ItemNoFound {
         if (node == null)
-            throw new ItemNoFound("Subárbol vacío: no se puede encontrar el máximo.");
+            throw new ItemNoFound("Subárbol vacío: no se puede encontrar el maximo.");
         while (node.right != null)
             node = node.right;
         return this.search(node.data);
@@ -174,13 +172,13 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return findMaxNode(this.root);
     }
 
-    // Eliminar todos los nodos
+    // eliminar todos los nodos
     public void destroyNodes() throws ExceptionIsEmpty {
         if (isEmpty()) throw new ExceptionIsEmpty("El árbol ya está vacío.");
         root = null;
     }
 
-    // Contar todos los nodos
+    // contar todos los nodos
     public int countAllNodes() {
         return countAllNodes(root);
     }
@@ -190,7 +188,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return 1 + countAllNodes(node.left) + countAllNodes(node.right);
     }
 
-    // Contar nodos no hoja
+    // Contar nodos  hoja
     public int countNodes() {
         return countNonLeafNodes(root);
     }
@@ -200,7 +198,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return 1 + countNonLeafNodes(node.left) + countNonLeafNodes(node.right);
     }
 
-    // Altura de subárbol con raíz x
+    // altura de subárbol con raíz x
     public int height(E x) {
         Node current = root;
         while (current != null) {
@@ -249,7 +247,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return 0;
     }
 
-    // Área del árbol
+    // area del árbol numero de hojas × altura total del arbol
     public int areaBST() {
         if (root == null) return 0;
         java.util.Queue<Node> queue = new java.util.LinkedList<>();
@@ -270,12 +268,12 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         return hojas * nivel;
     }
 
-    // Dibujar arbol
+    // dibujar arbol
     public void drawBST() {
         System.out.println(this.toString());
     }
 
-    // método grafico (toString)
+    // metodo grafico (toString)
     @Override
     public String toString() {
         if (root == null) return "(árbol vacío)";
@@ -307,7 +305,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
     }
 
-    //
+    //ejercicio parentesis
     public void parenthesize() {
         if (root == null) {
             System.out.println("()");
@@ -316,7 +314,7 @@ public class LinkedBST<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
     }
     
-    // Metodo auxiliar recursivo para construir la representacion con sangria
+    // imprime el arbol usando parentesis y sangrias de forma recursiva
     private void parenthesizeRec(Node node, int nivel) {
         if (node == null) return;
     
