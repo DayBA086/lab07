@@ -39,10 +39,10 @@ public class TestLinkedBST {
             System.out.println("Min: " + bst.getMin());
             System.out.println("Max: " + bst.getMax());
             System.out.println("Altura del subarbol con raiz 100: " + bst.height(100));
-            System.out.println("Amplitud en nivel 2: " + bst.amplitude(2));
-            System.out.println("Total de nodos: " + bst.countAllNodes());
-            System.out.println("Nodos no hoja: " + bst.countNodes());
-            System.out.println("Area del arbol BST: " + bst.areaBST());
+            System.out.println("Amplitud en nivel 2: " + bst.amplitude(2)); //ancho del nivel
+            System.out.println("Total de nodos: " + bst.countAllNodes());// cuantos hay en total
+            System.out.println("Nodos no hoja: " + bst.countNodes());// nodos con hijos
+            System.out.println("Area del arbol BST: " + bst.areaBST()); //num nodos hoja(4)× altura(3) 
 
             // dibujar arbol
             System.out.println("arbol BST dibujado:");
@@ -51,7 +51,7 @@ public class TestLinkedBST {
             System.out.println("arbol BST 2 dibujado:");
             bst2.drawBST();
             //ejercicio  parentesis
-            System.out.println("Representacion parenthesize del arbol BST:");
+            System.out.println("Representacion parentesis del arbol BST:");
             bst.parenthesize();
 
             // destruir arbol

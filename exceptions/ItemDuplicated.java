@@ -4,6 +4,6 @@ public class ItemDuplicated extends Exception {
         super(message);
     }
     public ItemDuplicated() {
-        super("El elemento ya existe en la estructura de datos.");
+        super("el elemento ya existe ");
     }
 }

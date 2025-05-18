@@ -6,6 +6,6 @@ public class ExceptionIsEmpty extends Exception {
     }
 
     public ExceptionIsEmpty() {
-        super("La estructura de datos está vacía.");
+        super("esta vacia");
     }
 }
